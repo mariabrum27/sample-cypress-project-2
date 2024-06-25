@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools{
+        nodejs "10.15.3"
+    }
     stages {
         stage('Build') { 
             steps {
