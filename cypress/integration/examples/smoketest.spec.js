@@ -31,4 +31,25 @@ context('smoketest', () => {
     })
   })
 
+  // Define the test case to validate failed login
+  describe('Validate failed login', () => {
+    it('verify user is unable to login with incorrect credentials', () => {
+
+      // Type the username 'visual_user' in the username field
+      cy.get('#user-name').type('visual_user')
+      // Type the password 'secret_sauce' in the password field
+      cy.get('#password').type('invalid_password')
+      // Click on the login button
+      cy.get('#login-button').click()
+
+      // Check if the icon error for incorrect credentials is displayed on input
+      cy.get('#login_button_container > div > form > div:nth-child(1) > svg').should('exist')
+      cy.get('#login_button_container > div > form > div:nth-child(2) > svg').should('exist')
+
+      // Verify the error message text for incorrect credentials
+      cy.get('#login_button_container > div > form > div.error-message-container.error').contains('Epic sadface: Username and password do not match any user in this service').should('exist')
+    })
+  })
+
+
 })
