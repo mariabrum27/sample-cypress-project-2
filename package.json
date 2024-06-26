@@ -8,7 +8,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "clear": "cypress cache clear"
   },
   "author": "mariabrum27",
   "license": "GPL-3.0",
