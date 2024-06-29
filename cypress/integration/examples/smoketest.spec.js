@@ -47,7 +47,7 @@ context('smoketest', () => {
       cy.get('#login_button_container > div > form > div:nth-child(2) > svg').should('exist')
 
       // Verify the error message text for incorrect credentials
-      cy.get('#login_button_container > div > form > div.error-message-container.error').should('have.text', 'Epic sadface: Username and password do not match any user in this service');
+      cy.get('#login_button_container > div > form > div.error-message-container.error').should('have.text', 'Epic e: Username and password do not match any user in this service');
     })
   })
 
