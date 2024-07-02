@@ -29,11 +29,44 @@ context('smoketest', () => {
       cy.get('#reset_sidebar_link').should('have.text', 'Reset App State') // Check for 'Reset App State' text
 
     })
+    it('verify there is a set of products with the details (image, Name, description, price', () => {
+
+      // Verify the title of the product should have a hyperlink to visualice the product deatails
+      cy.get('#item_4_title_link > div').should('exist')
+      cy.get('#item_4_title_link > div').should('have.text', 'Sauce Labs Backpack')
+      cy.get('#item_4_title_link > div').click()
+      cy.get('#back-to-products').should('exist')
+      cy.get('#back-to-products').click()
+
+      // Verify the product description 
+      cy.get('#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.inventory_item_label > div').should('exist')
+      cy.get('#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.inventory_item_label > div').should('have.text', 'carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.')
+
+      // Verify the product image
+      cy.get('#item_4_img_link > img').should('exist')
+
+      // Verify the product price
+      cy.get('#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.pricebar > div').should('exist')
+      cy.get('#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.pricebar > div').should('contain.text', '$')
+
+      // Verify the Add to cart option
+      cy.get('#add-to-cart-sauce-labs-backpack').should('exist')
+      cy.get('#add-to-cart-sauce-labs-backpack').should('have.text', 'Add to cart')
+      cy.get('#add-to-cart-sauce-labs-backpack').click()
+      cy.get('#shopping_cart_container > a').should('exist')
+      cy.get('#add-to-cart-sauce-labs-backpack').should('have.text', '1')
+      cy.get('#remove-sauce-labs-backpack').should('exist')
+      cy.get('#remove-sauce-labs-backpack').should('have.text', 'Remove')
+      cy.get('#remove-sauce-labs-backpack').click()
+      cy.get('#shopping_cart_container > a').should('exist')
+      cy.get('#shopping_cart_container > a').should('not.have.text', '1')
+
+    })
   })
 
   // Define the test case to validate failed login
   describe('Validate failed login', () => {
-    it('verify user is unable to login with incorrect credentials', () => {
+    it('verify user is unable to login by using incorrect credentials', () => {
 
       // Type the username 'visual_user' in the username field
       cy.get('#user-name').type('visual_user')
