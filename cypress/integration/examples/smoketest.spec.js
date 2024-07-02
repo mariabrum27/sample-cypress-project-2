@@ -29,6 +29,14 @@ context('smoketest', () => {
       cy.get('#reset_sidebar_link').should('have.text', 'Reset App State') // Check for 'Reset App State' text
 
     })
+
+  })
+  describe('', () => {
+    beforeEach(() => {
+      cy.get('#user-name').type('visual_user')
+      cy.get('#password').type('secret_sauce')
+      cy.get('#login-button').click()
+    });
     it('verify there is a set of products with the details (image, Name, description, price', () => {
 
       // Verify the title of the product should have a hyperlink to visualice the product deatails
@@ -36,6 +44,7 @@ context('smoketest', () => {
       cy.get('#item_4_title_link > div').should('have.text', 'Sauce Labs Backpack')
       cy.get('#item_4_title_link > div').click()
       cy.get('#back-to-products').should('exist')
+      cy.get('#back-to-products').should('have.text', 'Back to products')
       cy.get('#back-to-products').click()
 
       // Verify the product description 
@@ -54,15 +63,16 @@ context('smoketest', () => {
       cy.get('#add-to-cart-sauce-labs-backpack').should('have.text', 'Add to cart')
       cy.get('#add-to-cart-sauce-labs-backpack').click()
       cy.get('#shopping_cart_container > a').should('exist')
-      cy.get('#add-to-cart-sauce-labs-backpack').should('have.text', '1')
+      cy.get('#shopping_cart_container > a > span').should('have.text', '1')
       cy.get('#remove-sauce-labs-backpack').should('exist')
       cy.get('#remove-sauce-labs-backpack').should('have.text', 'Remove')
       cy.get('#remove-sauce-labs-backpack').click()
       cy.get('#shopping_cart_container > a').should('exist')
-      cy.get('#shopping_cart_container > a').should('not.have.text', '1')
+      cy.get('#shopping_cart_container > a > span').should('not.exist')
 
     })
-  })
+  });
+
 
   // Define the test case to validate failed login
   describe('Validate failed login', () => {
