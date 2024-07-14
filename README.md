@@ -1,17 +1,19 @@
-# QA Cypress Template
-QA automated testing template project using Cypress.io
+# QA Cypress testing project
 
-### How do I use this template?
+QA automated testing project using Cypress.io
 
-- Fork your own copy of `ruthlesshelp/qa-cypress-template` to your account
+### How do I use this testing project?
+
+- Fork your own copy of `mariabrum27/sample-cypress-project-2` to your account
   - Or clone this repo locally
-- Navigate to the `qa-cypress-template` folder
+- Navigate to the `sample-cypress-project-2` folder
 - Run `nvm use` command
 - Run `npm i` command
 - Run `npm run cypress` command
 
 # Overview
-This is an overview of the QA Cypress template.
+
+This is an overview of the QA Cypress project.
 
 ## Background
 
